@@ -1,47 +1,102 @@
 # Serenity-with-Cucumber
-# Assignment
 ## Intro
+To create a POC for Serenity with cucumber framework. 
+https://qa-petstore.herokuapp.com/
 
-The Scrum team went through one week of development (of a two weeks sprint), and delivered this petstore project to our GIT. My role as a QA automation engineer, is to automate the UI testing (*acceptance testing*) based on the user stories by using **Serinity with Cucumber** framework.
+# User stories
+US05 - Exposing a REST API
+Story points captured during Spring planning : 13
 
-In accordance to the NFR in our definition of done, I am also encouraged to verify and assess the performance of the application by using a tool like **JMeter** or any other tool of preference.
+# Description
+As a pet store user I want to access my resource by using the following REST API :
 
-## Expected output
-**The product owner** is going to execute your automated tests against the stable DEV environment in order to assess if the stories can be moved from *Completed* to *Accepted*.
-To make this possible, we expect you to provide minimal instructions on how to re-execute your tests.
+GET /api/pets
+GET /api/pets/{id}
+PUT /api/pets/{id}
+DELETE /api/pets/{id}
+POST /api/pets
 
-**A QA engineer** will do a pair review of your code to asses its quality, coherence, and portability.
+# Acceptance Criteria
+API strictly respects this Swagger definition
 
-# The Kanban board at mid sprint
-[Kanban Board](./assignment/Kanban%20Board.png)
+# US01 Display the current date
+Story points captured during Spring planning : 3
 
-# User stories and definition of Done
-[User stories and DoD](./assignment/USER-STORIES.md)
+# Description
+As a pet store user I want to see the current date displayed
 
-# How to run the application
-## Prerequisites to install
-*The team tested the app on MacOSX & Windows 7, it should work on Linux as well*
-- Version 4.3.1 of Node.js.
+# Acceptance Criteria
+Given the user has accessed the webapp
+When the page is rendered on the user's browser,
+Then He sees the date of the day displayed on the top right part of the page
+And the date format is : DD-MM-YYYY, ie 31-12-2016
+And The background color of the banner is black
 
-## Download app dependencies & build
-*Depending on your system, you might need to execute npm with admin rights.*
-- Navigate to project root folder and type `npm install`.
+# US03 - Be able to add a new pet
+Story points captured during Spring planning : 13
 
-## Run the app
-- Navigate to project root folder and type
-`./node_modules/json-server/bin/index.js --watch src/server/db.json --routes src/server/routes.json --static src/client`.
+# Description
+As a pet store user I want to be able to add a new pet so that I can add new pets to my collection
 
-## Accessing the app
-[Petstore web app](http://localhost:3000)
+# Acceptance Criteria
+Given the user has accessed the webapp
+When the page is rendered on the user's browser
+And the user tries to add a new pet
+Then Pet Name and Pet Status are both mandatory fields
 
-## If you feel lazy
-[Petstore web app deployed on Heroku](https://qa-petstore.herokuapp.com/)
+Given the user has accessed the webapp
+When the page is rendered on the user's browser
+And the user has entered Name and Status
+Then he is able to validate his input by using either keyboard Enter key or by clicking on the Create button
 
-## Useful
-- [Node.js website](https://nodejs.org/en/download/)
-- [Python](https://www.python.org/downloads/)
-- [Robot](http://robotframework.org/)
-- [Selenium](http://www.seleniumhq.org/)
-- [Eclipse](https://eclipse.org/downloads/)
-- [Robot - Eclipse IDE](https://github.com/NitorCreations/RobotFramework-EclipseIDE)
-- [JMeter](http://jmeter.apache.org/)
+Given the user has accessed the webapp
+When the page is rendered on the user's browser And the user has focus on the Pet Name field Then the following accessibility sequence should be respected when pressing the TAB keyboard key
+
+alt text
+
+Given the user has accessed the webapp
+When the page is rendered on the user's browser
+And the user has focus on the Pet Status field
+And the user has pressed the keys SHIFT + TAB
+Then the focus should be on the Pet Name field
+
+# US02 View the list of pets
+Story points captured during Spring planning : 8
+
+# Description
+As a pet store user I want to see my current pets so that I can view all my pets in one page.
+
+# Acceptance Criteria
+Given the user has accessed the webapp
+When the page is rendered on the user's browser
+Then the list of pets displayed in a table like component
+And I'm able to view my pets Name and Status
+
+Given the user has accessed the webapp
+When the page is rendered on the user's browser
+And 100 pets are loaded
+Then the list of pets displayed in a table like component
+And the page is loaded in less than 2 seconds
+
+# US04 - Be able to modify an existing pet
+Story points captured during Spring planning : 10
+
+# Description
+As a pet store user I want to be able to modify existing pets so that I can update their name or/and status.
+
+# Acceptance Criteria
+Given the user has accessed the webapp
+When the page is rendered on the user's browser
+And a list of pets is displayed
+Then the user should be able to edit a pet by clicking on the existing pet name or pet status
+
+Given the user has accessed the webapp
+When the page is rendered on the user's browser
+And a list of pets is displayed
+And the user is editing a pet
+Then the user has the following 3 ways to quit the editing of the pet
+
+Pressing the Esc key => Changes should be discarded.
+Pressing the Enter key => Changes should be saved.
+Clicking outside the edition zone => Changes should be saved.
+
